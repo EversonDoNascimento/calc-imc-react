@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import styles from "./assets/app.module.css";
+import Header from "./components/header";
+import Main, { condicaoExibir } from "./components/main";
+import Message from "./components/alert";
+import { useState } from "react";
+let cond = false;
 
-function App() {
+export function apresentar(condition) {
+  if (condition) {
+    alert("true");
+    return true;
+  } else {
+    alert("false");
+    return false;
+  }
+}
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header styleHeader={styles.stylesHeader} />
+      <Main
+        stylesMain={styles.stylesMain}
+        stylesSideLeft={styles.stylesSideLeft}
+        stylesSideRight={styles.stylesSideRight}
+        stylesGrid={styles.stylesGrid}
+        rightBig={styles.rightBig}
+        rightArrow={styles.rightArrow}
+      />
     </div>
   );
 }
